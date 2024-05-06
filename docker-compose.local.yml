@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  next-app:
+    container_name: turbo-next
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    environment:
+      ENV_VARIABLE: ${ENV_VARIABLE}
+      NEXT_PUBLIC_ENV_VARIABLE: ${NEXT_PUBLIC_ENV_VARIABLE}
+    volumes:
+      - ./src:/app
+    restart: always
+    ports:
+      - 3000:3000

@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  color: theme("colors.card");
+  background: theme("colors.background");
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* width */
+textarea::-webkit-scrollbar {
+  display: block;
+  width: 18px;
+}
+
+/* Track */
+textarea::-webkit-scrollbar-track {
+  margin-block: 5px;
+}
+ 
+/* Handle */
+textarea::-webkit-scrollbar-thumb {
+  background: theme("colors.primary"); 
+  padding: 0 6px;
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+  background-clip: padding-box;
+  border-radius: 8px;
+}
+
+/* Handle on hover */
+textarea::-webkit-scrollbar-thumb:hover {
+  background: theme("colors.secondary"); 
+  padding: 0 6px;
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+  background-clip: padding-box;
+  border-radius: 8px;
+}

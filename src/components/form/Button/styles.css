@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn-base-style {
+    @apply bg-tertiary hover:bg-footer text-white cursor-pointer rounded-full px-6 py-2 mx-2 text-base !whitespace-nowrap focus:outline-none;
+  }
+}
+
+.button-shadow {
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+}
