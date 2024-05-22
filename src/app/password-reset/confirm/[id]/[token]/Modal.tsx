@@ -24,7 +24,7 @@ export default () => {
     if (data?.detail) {
       router.push("/");
     }
-  }, [data]);
+  }, [data, router]);
 
   return (
     <Modal

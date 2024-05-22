@@ -15,7 +15,7 @@ export default (props: Props) => {
   const [verify, { isLoading, data, error }] = useVerifyEmailMutation();
   useEffect(() => {
     if (props.code) verify(props.code.replace(/%3A/g, ":"));
-  }, [props.code]);
+  }, [props.code, verify]);
 
   return (
     <Modal

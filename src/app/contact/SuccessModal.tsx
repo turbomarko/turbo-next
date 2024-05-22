@@ -17,7 +17,7 @@ export default (props: Props) => {
     >
       <H1 className="text-primary">We have received your message</H1>
       <H3 className="text-secondary">
-        We'll get back to you ASAP.
+        We will get back to you ASAP.
       </H3>
     </Modal>
   );
