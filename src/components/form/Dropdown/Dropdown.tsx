@@ -135,7 +135,7 @@ export const DropdownIndicator = (props: any) => {
   return (
     components.DropdownIndicator && (
       <components.DropdownIndicator {...props}>
-        <Icon name={props.selectProps.menuIsOpen ? "ChevronUpIcon" : "ChevronDownIcon"} className={`text-secondary `}/>
+        <Icon name={props.selectProps.menuIsOpen ? "ChevronUpIcon" : "ChevronDownIcon"} className="text-secondary" />
       </components.DropdownIndicator>
     )
   );

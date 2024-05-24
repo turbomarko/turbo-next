@@ -1,5 +1,3 @@
-import localFont from 'next/font/local';
-
 type Props = {
     children: React.ReactNode;
     className?: string;

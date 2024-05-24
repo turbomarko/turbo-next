@@ -1,4 +1,4 @@
-import SVG from 'react-inlinesvg';
+import SVG from "react-inlinesvg";
 
 import Link from "./Link";
 import { links } from "./config";

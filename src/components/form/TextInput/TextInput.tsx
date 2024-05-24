@@ -1,4 +1,4 @@
-import localFont from 'next/font/local';
+import localFont from "next/font/local";
 
 import { Error } from "@/components/text";
 
@@ -20,7 +20,7 @@ export interface Props {
   inputMode?: "search" | "text" | "email" | "tel" | "url" | "none" | "numeric" | "decimal";
 }
 
-const helveticaBold = localFont({ src: '../../text/fonts/HelveticaNeueBold.otf', variable: '--font-helveticaBold' });
+const helveticaBold = localFont({ src: "../../text/fonts/HelveticaNeueBold.otf", variable: "--font-helveticaBold" });
 
 export default (props: Props) => {
   const divClassName = `w-full my-1 ${props.divClassName}`;

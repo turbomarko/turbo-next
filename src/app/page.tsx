@@ -1,4 +1,4 @@
-import SVG from 'react-inlinesvg';
+import SVG from "react-inlinesvg";
 
 import { H1 } from "@/components/text";
 

@@ -1,5 +1,5 @@
 import "./globals.css";
-import localFont from 'next/font/local';
+import localFont from "next/font/local";
 
 import Provider from "@/redux/provider";
 import { AuthModal, VerifyEmailModal } from "@/containers";
@@ -7,7 +7,7 @@ import { AuthModal, VerifyEmailModal } from "@/containers";
 import Header from "./_Header";
 import Footer from "./_Footer";
 
-const helvetica = localFont({ src: '../components/text/fonts/HelveticaNeueMedium.otf', variable: '--font-helvetica' });
+const helvetica = localFont({ src: "../components/text/fonts/HelveticaNeueMedium.otf", variable: "--font-helvetica" });
 
 export const metadata = {
   title: "Turbo next",
