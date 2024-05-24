@@ -19,4 +19,4 @@ export default (props: LinkType) => {
       </Note>
     </Link>
   );
-}
+};

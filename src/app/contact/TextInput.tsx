@@ -7,4 +7,4 @@ export default (props: TextInputProps) => {
       inputClassName={`!rounded-2xl !px-4 ${props.inputClassName}`}
     />
   );
-}
+};

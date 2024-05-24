@@ -64,4 +64,4 @@ export default () => {
       </Button>
     </Modal>
   );
-}
+};

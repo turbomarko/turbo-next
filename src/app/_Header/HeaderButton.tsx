@@ -24,7 +24,7 @@ export default (props: Props) => {
     } else {
       router.push(props.destination);
     }
-  }
+  };
 
   return (
     <div
@@ -38,4 +38,4 @@ export default (props: Props) => {
       )}
     </div>
   );
-}
+};

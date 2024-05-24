@@ -9,7 +9,7 @@ export default () => {
   const { isMenuOpen } = useAppSelector((state) => state.ui);
   const handleClick = () => {
     dispatch(toggleMenu());
-  }
+  };
 
   return (
     <div
@@ -19,4 +19,4 @@ export default () => {
       <Icon name={isMenuOpen ? "XMarkIcon" : "Bars3Icon"} className="!h-10 !w-10 text-primary" />
     </div>
   );
-}
+};

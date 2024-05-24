@@ -7,4 +7,4 @@ export default () => {
       title="This page doesn't exist"
     />
   );
-}
+};

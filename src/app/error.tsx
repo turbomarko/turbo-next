@@ -9,4 +9,4 @@ export default () => {
       title="Uups, some technical hiccup happened, we are working on resolving it."
     />
   );
-}
+};

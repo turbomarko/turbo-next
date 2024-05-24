@@ -13,7 +13,7 @@ export default (props: Props) => {
 
   const handleClick = () => {
     dispatch(openAuthModal("/welcome"));
-  }
+  };
 
   return (
     <div onClick={handleClick} className="mb-2 hover:opacity-50">
@@ -22,4 +22,4 @@ export default (props: Props) => {
       </Note>
     </div>
   );
-}
+};

@@ -50,12 +50,12 @@ export default (props: Props) => {
               key={option.description}
               label={option.description}
               value={props.selections.includes(option.id)}
-              onClick={() => {setSelections(option)}}
+              onClick={() => { setSelections(option); }}
               inDropdown
             />
           ))}
         </div>
       </Menu.Items>
     </Menu>
-  )
-}
+  );
+};

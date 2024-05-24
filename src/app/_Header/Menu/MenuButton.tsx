@@ -24,7 +24,7 @@ export default (props: Props) => {
     } else {
       router.push(props.destination);
     }
-  }
+  };
 
   return (
     <div
@@ -34,4 +34,4 @@ export default (props: Props) => {
       <H1 className="cursor-pointer text-center text-primary hover:text-secondary">{props.name}</H1>
     </div>
   );
-}
+};

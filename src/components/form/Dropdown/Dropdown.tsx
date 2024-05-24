@@ -154,5 +154,5 @@ export default (props: Props) => {
       placeholder={props.placeholder}
       menuPortalTarget={document.body}
     />
-  )
-}
+  );
+};

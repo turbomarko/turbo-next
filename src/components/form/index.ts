@@ -9,7 +9,7 @@ import RangeSlider from "./RangeSlider";
 import Switch from "./Switch";
 import ClipboardCopy from "./ClipboardCopy";
 
-export { 
+export {
   Button,
   LinkButton,
   Checkbox,

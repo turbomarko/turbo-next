@@ -11,5 +11,5 @@ export default (props: Props) => {
       <H1 className="text-center">{props.title}</H1>
       <Base className="text-center text-primary mt-6">{props.intro}</Base>
     </>
-  )
-}
+  );
+};

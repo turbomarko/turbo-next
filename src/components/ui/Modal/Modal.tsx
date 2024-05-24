@@ -72,5 +72,5 @@ export default (props: Props) => {
         </div>
       </Dialog>
     </Transition.Root>
-  )
-}
+  );
+};

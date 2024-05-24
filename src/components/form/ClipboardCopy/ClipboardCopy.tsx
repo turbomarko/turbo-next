@@ -15,9 +15,9 @@ export default (props: Props) => {
   const [isCopied, setIsCopied] = useState(false);
   const copyToClipboard = (text: string) => {
     if (navigator && navigator.clipboard) navigator.clipboard.writeText(text)
-      .then(() => { setIsCopied(true) })
-      .catch((error) => { alert(`Copy failed! ${error}`) });
-  }
+      .then(() => { setIsCopied(true); })
+      .catch((error) => { alert(`Copy failed! ${error}`); });
+  };
 
   return (
     <div
@@ -28,4 +28,4 @@ export default (props: Props) => {
       <Icon name="DocumentDuplicateIcon" />
     </div>
   );
-}
+};

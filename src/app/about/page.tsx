@@ -12,5 +12,5 @@ export default () => {
         </div>
       </div>
     </main>
-  )
-}
+  );
+};

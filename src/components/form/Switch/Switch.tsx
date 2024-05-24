@@ -36,4 +36,4 @@ export default (props: Props) => {
       </Switch>
     </div>
   );
-}
+};

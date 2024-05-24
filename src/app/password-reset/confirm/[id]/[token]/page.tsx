@@ -6,4 +6,4 @@ export default () => {
       <Modal />
     </div>
   );
-}
+};

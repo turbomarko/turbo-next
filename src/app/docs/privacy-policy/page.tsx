@@ -15,5 +15,5 @@ export default () => {
       <Content secionList={policies} />
 
     </>
-  )
-}
+  );
+};
