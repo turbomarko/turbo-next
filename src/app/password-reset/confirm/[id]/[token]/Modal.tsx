@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/dist/query/react";
 
 
 import { H1, Base, Error } from "@/components/text";
@@ -19,6 +20,8 @@ export default () => {
   const [resetPasswordConfirm, { isLoading, error, data }] = useResetPasswordConfirmMutation();
   const pathname = usePathname();
   const router = useRouter();
+
+  const fieldErrors = ((error as FetchBaseQueryError)?.data as ({fieldErrors: {[key: string]: string}}))?.fieldErrors;
 
   useEffect(() => {
     if (data?.detail) {
@@ -48,9 +51,9 @@ export default () => {
         type="password"
         placeholder="Confirm new password"
       />
-      <Error>{(error as any)?.data?.fieldErrors?.newPassword1}</Error>
-      <Error>{(error as any)?.data?.fieldErrors?.newPassword2}</Error>
-      <Error>{(error as any)?.data?.fieldErrors?.token ? "The reset e-mail has expired. Please, request a new one." : ""}</Error>
+      <Error>{fieldErrors?.newPassword1}</Error>
+      <Error>{fieldErrors?.newPassword2}</Error>
+      <Error>{fieldErrors?.token ? "The reset e-mail has expired. Please, request a new one." : ""}</Error>
       <Button
         onClick={() => resetPasswordConfirm({
           ...formData,

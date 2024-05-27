@@ -2,7 +2,7 @@
 
 import { Menu } from "@headlessui/react";
 
-import { Interest } from "@/types";
+import { MultipleDropdownOption } from "@/types";
 
 import Icon from "@/components/ui/Icon";
 
@@ -11,14 +11,14 @@ import Checkbox from "../Checkbox";
 type Props = {
   title: string;
   field: string;
-  options: Interest[];
+  options: MultipleDropdownOption[];
   selections: number[];
-  updateForm: (field: string, value: any) => void;
+  updateForm: (field: string, value: number[]) => void;
 };
 
 export default (props: Props) => {
 
-  const setSelections = (option: Interest) => {
+  const setSelections = (option: MultipleDropdownOption) => {
     if (props.selections.includes(option.id)) {
       props.updateForm(props.field, props.selections.filter((value) => value !== option.id));
     } else {

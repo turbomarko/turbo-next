@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/dist/query/react";
 
 import { H1, Base } from "@/components/text";
 import { Modal, LoadingIndicator } from "@/components/ui";
@@ -30,7 +31,7 @@ export default (props: Props) => {
         </>
       ) : (
         <>
-          <H1>{(error as any)?.data?.error}</H1>
+          <H1>{((error as FetchBaseQueryError)?.data as {error: string})?.error}</H1>
           {data?.detail ? (
             <>
               <H1>Success!</H1>

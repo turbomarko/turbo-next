@@ -1,6 +1,6 @@
 "use client";
 
-import Select, { components } from "react-select";
+import Select, { components, CSSObjectWithLabel } from "react-select";
 
 import Icon from "@/components/ui/Icon";
 
@@ -27,29 +27,29 @@ const hoverColor = "#CBAE9E";
 
 export const dropdownStyles = (textColor = defaultTextColor, width = "100%") => {
   return {
-    input: (base: any) => ({
+    input: (base: CSSObjectWithLabel) => ({
       ...base,
       paddingTop: 0,
       paddingBottom: 0,
       marginTop: 0,
       marginBottom: 0,
     }),
-    singleValue: (base: any) => ({
+    singleValue: (base: CSSObjectWithLabel) => ({
       ...base,
       color: textColor,
     }),
-    multiValue: (base: any) => ({
+    multiValue: (base: CSSObjectWithLabel) => ({
       ...base,
       backgroundColor: defaultTextColor,
       borderRadius: 8,
     }),
-    multiValueLabel: (base: any) => ({
+    multiValueLabel: (base: CSSObjectWithLabel) => ({
       ...base,
       color: backgroundColor,
       paddingTop: 2,
       paddingBottom: 3,
     }),
-    multiValueRemove: (base: any) => ({
+    multiValueRemove: (base: CSSObjectWithLabel) => ({
       ...base,
       color: backgroundColor,
       borderRadius: 8,
@@ -59,7 +59,7 @@ export const dropdownStyles = (textColor = defaultTextColor, width = "100%") => 
         backgroundColor: hoverColor,
       }
     }),
-    valueContainer: (base: any) => ({
+    valueContainer: (base: CSSObjectWithLabel) => ({
       ...base,
       paddingLeft: 6,
       paddingRight: 6,
@@ -68,16 +68,17 @@ export const dropdownStyles = (textColor = defaultTextColor, width = "100%") => 
       marginTop: 0,
       marginBottom: 0,
     }),
-    placeholder: (base: any) => ({
+    placeholder: (base: CSSObjectWithLabel) => ({
       ...base,
       color: textColor,
     }),
-    dropdownIndicator: (base: any) => ({
+    dropdownIndicator: (base: CSSObjectWithLabel) => ({
       ...base,
       color: textColor,
       marginRight: 0,
     }),
-    control: (base: any, state: any) => ({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    control: (base: CSSObjectWithLabel, state: any) => ({
       ...base,
       width: "100%",
       background: backgroundColor,
@@ -88,7 +89,6 @@ export const dropdownStyles = (textColor = defaultTextColor, width = "100%") => 
       paddingBottom: 0,
       borderRadius: 8,
       borderWidth: 0,
-      boxShadow: state.isFocused ? null : null,
       color: textColor,
       "&:hover": {
         // Overwrittes the different states of border
@@ -96,26 +96,26 @@ export const dropdownStyles = (textColor = defaultTextColor, width = "100%") => 
       }
     }),
     indicatorSeparator: () => ({ display: "none" }),
-    indicatorsContainer: (base: any) => ({
+    indicatorsContainer: (base: CSSObjectWithLabel) => ({
       ...base,
       height: 33,
     }),
-    menu: (base: any) => ({
+    menu: (base: CSSObjectWithLabel) => ({
       ...base,
       marginTop: 2,
       background: backgroundColor,
       borderRadius: 8,
       overflow: "hidden"
     }),
-    menuPortal: (base: any) => ({
+    menuPortal: (base: CSSObjectWithLabel) => ({
       ...base,
       zIndex: 9999,
     }),
-    menuList: (base: any) => ({
+    menuList: (base: CSSObjectWithLabel) => ({
       ...base,
       padding: 0,
     }),
-    option: (base: any) => ({
+    option: (base: CSSObjectWithLabel) => ({
       ...base,
       background: backgroundColor,
       "&:hover": {
@@ -124,13 +124,14 @@ export const dropdownStyles = (textColor = defaultTextColor, width = "100%") => 
       },
       color: textColor,
     }),
-    container: (base: any) => ({
+    container: (base: CSSObjectWithLabel) => ({
       ...base,
       width: width,
     }),
   };
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const DropdownIndicator = (props: any) => {
   return (
     components.DropdownIndicator && (
