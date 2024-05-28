@@ -3,6 +3,7 @@ import SVG from "react-inlinesvg";
 import { H1 } from "@/components/text";
 
 export default () => {
+  const test = 0;
   return (
     <main className="h-full w-full bg-white">
       {/* Cover and title */}
@@ -11,5 +12,6 @@ export default () => {
         <H1 className="text-card text-center my-6">This is a subtitle</H1>
       </div>
     </main>
-  )
+  ) 
 }
+
