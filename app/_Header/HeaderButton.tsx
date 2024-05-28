@@ -11,15 +11,20 @@ type Props = {
   icon: string | IconName;
   authRequired?: boolean;
   isImg?: boolean;
-}
+};
 
 export default (props: Props) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const tokenExpirationTime = useAppSelector((state) => state.auth.tokenExpirationTime);
+  const tokenExpirationTime = useAppSelector(
+    (state) => state.auth.tokenExpirationTime,
+  );
 
   const handleClick = () => {
-    if (props.authRequired && (!tokenExpirationTime || tokenExpirationTime < Date.now().toString())) {
+    if (
+      props.authRequired &&
+      (!tokenExpirationTime || tokenExpirationTime < Date.now().toString())
+    ) {
       dispatch(openAuthModal(props.destination));
     } else {
       router.push(props.destination);
@@ -27,14 +32,14 @@ export default (props: Props) => {
   };
 
   return (
-    <div
-      className="cursor-pointer px-2"
-      onClick={handleClick}
-    >
+    <div className="cursor-pointer px-2" onClick={handleClick}>
       {props.isImg ? (
         <img src={`/${props.icon}.svg`} alt={props.icon} className="h-9" />
       ) : (
-        <Icon name={props.icon as IconName} className="!h-10 !w-10 text-primary" />
+        <Icon
+          name={props.icon as IconName}
+          className="!h-10 !w-10 text-primary"
+        />
       )}
     </div>
   );

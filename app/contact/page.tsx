@@ -5,7 +5,7 @@ import Form from "./Form";
 export default () => {
   return (
     <div className="w-full">
-      <div className="w-full max-w-lg mx-auto mt-8 text-center px-2">
+      <div className="mx-auto mt-8 w-full max-w-lg px-2 text-center">
         <H1 className="text-primary">Contact us</H1>
         <Form />
       </div>

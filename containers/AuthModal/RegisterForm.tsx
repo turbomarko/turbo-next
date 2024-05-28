@@ -2,7 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import SVG from 'react-inlinesvg';
+import { FetchBaseQueryError } from "@reduxjs/toolkit/dist/query/react";
+import SVG from "react-inlinesvg";
+
+import { UserResponse } from "@/types";
 
 import { Base, H1, Error } from "@/components/text";
 import { Button } from "@/components/form";
@@ -12,11 +15,16 @@ import TextInput from "./TextInput";
 
 type Props = {
   finalizeAuth: (isRegister?: boolean) => void;
-}
+};
 
 export default (props: Props) => {
   const [register, { isLoading: isRegistering, error }] = useRegisterMutation();
   const [login, { isLoading: isLogging }] = useLoginMutation();
+  const fieldErrors = (
+    (error as FetchBaseQueryError)?.data as {
+      fieldErrors: { [key: string]: string[] };
+    }
+  )?.fieldErrors;
 
   const [form, setForm] = useState({
     firstName: "",
@@ -28,17 +36,19 @@ export default (props: Props) => {
   const [terms, setTerms] = useState(false);
   const [termError, setTermError] = useState(false);
 
-  const onChange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
-    const { name, value } = e.target
-    setForm({ ...form, [name]: value.trim() })
-  }
+  const onChange = (
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+  ) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value.trim() });
+  };
 
   const handleSubmit = async () => {
     if (!terms) {
       setTermError(true);
       return;
     }
-    const result = await register(form) as any;
+    const result = (await register(form)) as { data: UserResponse };
     if (result?.data?.user) {
       await login({
         email: form.email,
@@ -46,26 +56,26 @@ export default (props: Props) => {
       });
       props.finalizeAuth(true);
     }
-  }
+  };
 
   return (
-    <div className="flex flex-col justify-center items-center min-w-fit px-4 md:px-8 md:border-l border-secondary">
+    <div className="flex min-w-fit flex-col items-center justify-center border-secondary px-4 md:border-l md:px-8">
       <H1 className="mb-2">Sign up</H1>
-      <div className="w-full flex justify-around">
+      <div className="flex w-full justify-around">
         <TextInput
           name="firstName"
           value={form.firstName}
           onChange={onChange}
           placeholder="First name"
           divClassName="!mr-2"
-          fieldErrors={(error as any)?.data?.fieldErrors?.firstName}
-          />
+          fieldErrors={fieldErrors?.firstName}
+        />
         <TextInput
           name="lastName"
           value={form.lastName}
           onChange={onChange}
           placeholder="Last name"
-          fieldErrors={(error as any)?.data?.fieldErrors?.lastName}
+          fieldErrors={fieldErrors?.lastName}
         />
       </div>
       <TextInput
@@ -73,9 +83,9 @@ export default (props: Props) => {
         value={form.email}
         onChange={onChange}
         placeholder="E-Mail"
-        fieldErrors={(error as any)?.data?.fieldErrors?.email}
+        fieldErrors={fieldErrors?.email}
       />
-      <div className="w-full flex justify-around">
+      <div className="flex w-full justify-around">
         <TextInput
           name="password1"
           value={form.password1}
@@ -83,7 +93,7 @@ export default (props: Props) => {
           type="password"
           placeholder="Password"
           divClassName="!mr-2"
-          fieldErrors={(error as any)?.data?.fieldErrors?.password1}
+          fieldErrors={fieldErrors?.password1}
         />
         <TextInput
           name="password2"
@@ -91,29 +101,48 @@ export default (props: Props) => {
           onChange={onChange}
           type="password"
           placeholder="Repeat password"
-          fieldErrors={(error as any)?.data?.fieldErrors?.password2}
+          fieldErrors={fieldErrors?.password2}
         />
       </div>
       <label
-        className="flex items-start cursor-pointer my-2 !text-secondary"
+        className="my-2 flex cursor-pointer items-start !text-secondary"
         onClick={() => {
           setTerms(!terms);
           setTermError(false);
         }}
       >
-        <SVG src={`/checkbox-${terms ? "on" : "off"}.svg`} className="h-4 mt-0.5" />
+        <SVG
+          src={`/checkbox-${terms ? "on" : "off"}.svg`}
+          className="mt-0.5 h-4"
+        />
         <Base className="ml-2 cursor-pointer">
           I accept the
-          <Link href="/docs/terms-and-conditions" className="mx-1 underline underline-offset-2">Terms and Conditions</Link>
+          <Link
+            href="/docs/terms-and-conditions"
+            className="mx-1 underline underline-offset-2"
+          >
+            Terms and Conditions
+          </Link>
           and the
-          <Link href="/docs/privacy-policy" className="mx-1 underline underline-offset-2">Privacy policy</Link>
+          <Link
+            href="/docs/privacy-policy"
+            className="mx-1 underline underline-offset-2"
+          >
+            Privacy policy
+          </Link>
         </Base>
       </label>
-      {termError && <Error>Please, accept the terms and conditions and the privacy policy</Error>}
-      <Button onClick={handleSubmit} isLoading={isRegistering || isLogging}>Sign up</Button>
-      {(error as any)?.data?.fieldErrors?.nonFieldErrors?.map((error: string, index: number) => (
+      {termError && (
+        <Error>
+          Please, accept the terms and conditions and the privacy policy
+        </Error>
+      )}
+      <Button onClick={handleSubmit} isLoading={isRegistering || isLogging}>
+        Sign up
+      </Button>
+      {fieldErrors?.nonFieldErrors?.map((error: string, index: number) => (
         <Error key={index}>{error}</Error>
       ))}
     </div>
   );
-}
+};

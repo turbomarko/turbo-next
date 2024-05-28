@@ -19,15 +19,15 @@ type Props = {
 
 export default (props: Props) => {
   return (
-    <div className={`w-full flex flex-col ${props.className}`}>
+    <div className={`flex w-full flex-col ${props.className}`}>
       <DatePicker
         selected={props.date}
         onChange={(date) => props.setDate(date)}
         timeInputLabel="Time:"
-        onFocus={e => e.target.blur()}
+        onFocus={(e) => e.target.blur()}
         dateFormat={props.dateOnly ? "dd/MM/yyyy" : "dd/MM/yyyy h:mm aa"}
         showTimeInput={!props.dateOnly}
-        className={`w-full py-1 px-2 text-secondary bg-card placeholder-secondary placeholder-opacity-100 my-3 rounded-lg ${props.fieldErrors?.length ? "!bg-red-600 !text-white !placeholder-white" : ""}`}
+        className={`my-3 w-full rounded-lg bg-card px-2 py-1 text-secondary placeholder-secondary placeholder-opacity-100 ${props.fieldErrors?.length ? "!bg-red-600 !text-white !placeholder-white" : ""}`}
         placeholderText={props.placeholder}
         minDate={props.minDate}
         maxDate={props.maxDate}

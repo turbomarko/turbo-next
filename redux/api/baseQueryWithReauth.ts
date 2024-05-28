@@ -23,21 +23,30 @@ const baseQueryWithReauth: BaseQueryFn<
   await mutex.waitForUnlock();
   // If we want to access endpoints that must return different things based on authenticated status, we refresh the token first
   const differingEndpoints: string[] = [];
-  const urlEnd = typeof args === 'string' ? args : args.url
+  const urlEnd = typeof args === "string" ? args : args.url;
   if (differingEndpoints.includes(urlEnd)) {
     // checking whether the mutex is locked
     if (!mutex.isLocked()) {
-      const release = await mutex.acquire()
+      const release = await mutex.acquire();
       try {
         // try to get a new token
-        const refreshResult = await baseQuery({
-          url: "/auth/token/refresh/",
-          method: "POST",
-          body: {},
-        }, api, extraOptions);
+        const refreshResult = await baseQuery(
+          {
+            url: "/auth/token/refresh/",
+            method: "POST",
+            body: {},
+          },
+          api,
+          extraOptions,
+        );
         if (refreshResult.data) {
           // store the new token expiration time
-          await api.dispatch(setTokenExpirationTime((refreshResult.data as any).refreshExpiration));
+          await api.dispatch(
+            setTokenExpirationTime(
+              (refreshResult.data as { refreshExpiration: string })
+                .refreshExpiration,
+            ),
+          );
         }
       } finally {
         release();
@@ -49,20 +58,33 @@ const baseQueryWithReauth: BaseQueryFn<
   }
 
   let result = await baseQuery(args, api, extraOptions);
-  if (result.error && result.error.status === 401 && (!urlEnd.includes("/auth/") || urlEnd === "/auth/user/delete/")) {
+  if (
+    result.error &&
+    result.error.status === 401 &&
+    (!urlEnd.includes("/auth/") || urlEnd === "/auth/user/delete/")
+  ) {
     // checking whether the mutex is locked
     if (!mutex.isLocked()) {
-      const release = await mutex.acquire()
+      const release = await mutex.acquire();
       try {
         // try to get a new token
-        const refreshResult = await baseQuery({
-          url: "/auth/token/refresh/",
-          method: "POST",
-          body: {},
-        }, api, extraOptions);
+        const refreshResult = await baseQuery(
+          {
+            url: "/auth/token/refresh/",
+            method: "POST",
+            body: {},
+          },
+          api,
+          extraOptions,
+        );
         if (refreshResult.data) {
           // store the new token expiration time
-          api.dispatch(setTokenExpirationTime((refreshResult.data as any).refreshExpiration));
+          api.dispatch(
+            setTokenExpirationTime(
+              (refreshResult.data as { refreshExpiration: string })
+                .refreshExpiration,
+            ),
+          );
           // retry the initial query
           result = await baseQuery(args, api, extraOptions);
         } else {

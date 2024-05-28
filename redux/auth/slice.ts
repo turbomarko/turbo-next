@@ -12,14 +12,12 @@ const slice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setTokenExpirationTime: (state, action: PayloadAction<string | null>) => {
+    setTokenExpirationTime: (state, action: PayloadAction<string | null>) => {
       state.tokenExpirationTime = action.payload;
     },
   },
 });
 
-export const {
-  setTokenExpirationTime,
-} = slice.actions;
+export const { setTokenExpirationTime } = slice.actions;
 
 export default slice.reducer;

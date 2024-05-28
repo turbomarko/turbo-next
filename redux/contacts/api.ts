@@ -1,6 +1,6 @@
 import { ContactMessage } from "@/types";
 
-import baseApi from '../api';
+import baseApi from "../api";
 
 const api = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -11,7 +11,10 @@ const api = baseApi.injectEndpoints({
         body,
       }),
     }),
-    subscribeToNewsletter: builder.mutation<{email: string, id: number}, string>({
+    subscribeToNewsletter: builder.mutation<
+      { email: string; id: number },
+      string
+    >({
       query: (email) => ({
         url: "/contacts/newsletter/",
         method: "POST",

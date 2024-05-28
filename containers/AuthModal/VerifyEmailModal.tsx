@@ -20,7 +20,7 @@ export default () => {
     if (response?.detail) {
       setEmailSent(true);
     }
-  }
+  };
 
   return (
     <Modal
@@ -29,29 +29,25 @@ export default () => {
       className="text-center"
     >
       <H1>Verify your e-mail</H1>
-      <Base>
-        You need to verify your e-mail before you can continue.
-      </Base>
+      <Base>You need to verify your e-mail before you can continue.</Base>
       {emailSent ? (
         <Base className="mt-4">
-          We've sent you an e-mail with a link to verify your e-mail address.
+          We&apos;ve sent you an e-mail with a link to verify your e-mail
+          address.
         </Base>
       ) : (
-        <div className="flex justify-center items-center mt-8">
+        <div className="mt-8 flex items-center justify-center">
           <Button
             onClick={() => dispatch(closeVerifyEmailModal())}
             variant="tertiary"
           >
             Cancel
           </Button>
-          <Button
-            onClick={() => handleResendVerifyEmail()}
-            className="ml-4"
-          >
+          <Button onClick={() => handleResendVerifyEmail()} className="ml-4">
             Resend e-mail
           </Button>
         </div>
       )}
     </Modal>
   );
-}
+};

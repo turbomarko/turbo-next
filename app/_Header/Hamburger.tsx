@@ -12,11 +12,11 @@ export default () => {
   };
 
   return (
-    <div
-      className="cursor-pointer px-2 lg:hidden"
-      onClick={handleClick}
-    >
-      <Icon name={isMenuOpen ? "XMarkIcon" : "Bars3Icon"} className="!h-10 !w-10 text-primary" />
+    <div className="cursor-pointer px-2 lg:hidden" onClick={handleClick}>
+      <Icon
+        name={isMenuOpen ? "XMarkIcon" : "Bars3Icon"}
+        className="!h-10 !w-10 text-primary"
+      />
     </div>
   );
 };

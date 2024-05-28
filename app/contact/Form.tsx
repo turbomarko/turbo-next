@@ -1,6 +1,6 @@
 "use client";
 
-import { useState} from "react";
+import { useState } from "react";
 
 import { Button } from "@/components/form";
 import { useSendContactMessageMutation } from "@/redux/contacts";
@@ -34,7 +34,7 @@ export default () => {
 
   return (
     <>
-      <div className="w-full flex mt-10">
+      <div className="mt-10 flex w-full">
         <TextInput
           name="firstName"
           placeholder="First name"
@@ -63,19 +63,12 @@ export default () => {
         textArea
         divClassName="mt-2"
       />
-      <div className="flex justify-end mt-4 mb-10">
-        <Button
-          onClick={submit}
-          className="!mr-0"
-          isLoading={isLoading}
-        >
+      <div className="mb-10 mt-4 flex justify-end">
+        <Button onClick={submit} className="!mr-0" isLoading={isLoading}>
           Send
         </Button>
       </div>
-      <SuccessModal
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-      />
+      <SuccessModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </>
   );
 };

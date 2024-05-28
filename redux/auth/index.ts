@@ -1,5 +1,5 @@
-import auth from './slice';
+import auth from "./slice";
 
-export * from './slice';
-export * from './api';
+export * from "./slice";
+export * from "./api";
 export default auth;

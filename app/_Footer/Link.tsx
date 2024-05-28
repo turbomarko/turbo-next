@@ -7,16 +7,12 @@ import AuthButton from "./AuthButton";
 
 export default (props: LinkType) => {
   if (props.isAuth) {
-    return (
-      <AuthButton name={props.name} />
-    );
+    return <AuthButton name={props.name} />;
   }
 
   return (
     <Link href={props.href} className="mb-2 hover:opacity-50">
-      <Note className="cursor-pointer whitespace-nowrap">
-        {props.name}
-      </Note>
+      <Note className="cursor-pointer whitespace-nowrap">{props.name}</Note>
     </Link>
   );
 };

@@ -17,9 +17,7 @@ export default (props: Props) => {
 
   return (
     <div onClick={handleClick} className="mb-2 hover:opacity-50">
-      <Note className="cursor-pointer">
-        {props.name}
-      </Note>
+      <Note className="cursor-pointer">{props.name}</Note>
     </div>
   );
 };

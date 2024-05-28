@@ -3,7 +3,7 @@ import type {
   UserResponse,
   LoginRequest,
   RegisterRequest,
-  ResetPasswordConfirmRequest
+  ResetPasswordConfirmRequest,
 } from "@/types";
 
 const api = baseApi.injectEndpoints({
@@ -29,33 +29,36 @@ const api = baseApi.injectEndpoints({
         body: userData,
       }),
     }),
-    resetPassword: builder.mutation<{detail: string}, string>({
+    resetPassword: builder.mutation<{ detail: string }, string>({
       query: (email) => ({
         url: "/auth/password/reset/",
         method: "POST",
-        body: {email},
+        body: { email },
       }),
     }),
-    resetPasswordConfirm: builder.mutation<{detail: string}, ResetPasswordConfirmRequest>({
+    resetPasswordConfirm: builder.mutation<
+      { detail: string },
+      ResetPasswordConfirmRequest
+    >({
       query: (credentials) => ({
         url: "/auth/password/reset/confirm/",
         method: "POST",
         body: credentials,
-      })
+      }),
     }),
-    verifyEmail: builder.mutation<{detail: string}, string>({
+    verifyEmail: builder.mutation<{ detail: string }, string>({
       query: (key) => ({
         url: "/auth/registration/verify-email/",
         method: "POST",
-        body: {key},
-      })
+        body: { key },
+      }),
     }),
-    resendVerifyEmail: builder.mutation<{detail: string}, string>({
+    resendVerifyEmail: builder.mutation<{ detail: string }, string>({
       query: (email) => ({
         url: "/auth/registration/resend-email/",
         method: "POST",
-        body: {email},
-      })
+        body: { email },
+      }),
     }),
   }),
   overrideExisting: false,
