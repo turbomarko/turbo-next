@@ -126,7 +126,7 @@ export const dropdownStyles = (textColor = defaultTextColor, width = "100%") => 
     }),
     container: (base: CSSObjectWithLabel) => ({
       ...base,
-      width: width,
+      width,
     }),
   };
 };
