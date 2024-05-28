@@ -33,6 +33,7 @@ module.exports = {
     "quote-props": ["warn", "as-needed"],
     "quotes": ["warn", "double"],
     "import/no-anonymous-default-export": "off",
+    "semi": [2, "always"],
     // TypeScript rules
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/array-type": [
