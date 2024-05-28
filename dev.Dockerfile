@@ -3,7 +3,7 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Install dependencies based on the preferred package manager
-COPY src/* ./
+COPY * ./
 RUN \
   if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
   elif [ -f package-lock.json ]; then npm ci --legacy-peer-deps; \

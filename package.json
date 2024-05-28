@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "cd .. && husky install src/.husky"
+    "prepare": "husky install"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.19",

@@ -10,7 +10,7 @@ services:
       ENV_VARIABLE: ${ENV_VARIABLE}
       NEXT_PUBLIC_ENV_VARIABLE: ${NEXT_PUBLIC_ENV_VARIABLE}
     volumes:
-      - ./src:/app
+      - .:/app
     restart: always
     ports:
       - 3000:3000
