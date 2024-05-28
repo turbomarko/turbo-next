@@ -11,5 +11,5 @@ export default () => {
         <H1 className="text-card text-center my-6">This is a subtitle</H1>
       </div>
     </main>
-  )
+  );
 }
